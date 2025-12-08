@@ -1,0 +1,31 @@
+[
+  {
+    "id": "1",
+    "company": "Tech Company Inc.",
+    "position": "Senior Full Stack Developer",
+    "startDate": "2022-01-01",
+    "endDate": "2024-12-01",
+    "current": false,
+    "description": [
+      "Led development of multiple web applications using React and Node.js",
+      "Collaborated with cross-functional teams to deliver high-quality products",
+      "Mentored junior developers and conducted code reviews"
+    ],
+    "technologies": ["React", "Node.js", "TypeScript", "AWS"]
+  },
+  {
+    "id": "2",
+    "company": "StartupXYZ",
+    "position": "Full Stack Developer",
+    "startDate": "2020-06-01",
+    "endDate": "2021-12-31",
+    "current": false,
+    "description": [
+      "Built and maintained web applications from scratch",
+      "Implemented RESTful APIs and database schemas",
+      "Optimized application performance and user experience"
+    ],
+    "technologies": ["React", "Express", "MongoDB", "PostgreSQL"]
+  }
+]
+
