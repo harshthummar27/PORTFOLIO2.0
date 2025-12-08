@@ -3,19 +3,25 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   useEffect(() => {
-    // Ensure video plays on mobile devices
-    if (videoRef.current) {
+    // Lazy load video when component mounts
+    setShouldLoadVideo(true);
+  }, []);
+
+  useEffect(() => {
+    // Ensure video plays on mobile devices after video loads
+    if (videoRef.current && shouldLoadVideo) {
       videoRef.current.play().catch(() => {
         // Video autoplay prevented - silent fail
       });
     }
-  }, []);
+  }, [shouldLoadVideo]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.querySelector(sectionId);
@@ -27,25 +33,27 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-20 sm:pt-24 md:pt-28 pb-8 sm:pb-12"
+      className="relative overflow-hidden pt-36 sm:pt-40 md:pt-32 xl:pt-24 pb-8 sm:pb-12"
     >
       {/* Fallback Background (in case video doesn't load) */}
       <div className="absolute inset-0 bg-black z-0"></div>
 
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover z-[1]"
-        style={{ objectFit: 'cover' }}
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Video Background - Lazy Loaded */}
+      {shouldLoadVideo && (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover z-[1]"
+          style={{ objectFit: 'cover' }}
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
 
       {/* Blurred Background - Developer Workspace Environment */}
       <div className="absolute inset-0 bg-black/40 md:bg-black/30 z-[2]">
@@ -226,7 +234,7 @@ export default function Hero() {
               <div className="text-6xl xl:text-7xl font-black text-white mb-2" style={{
                 textShadow: '0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)',
               }}>
-                25+
+                05+
               </div>
               <div className="text-white/70 text-base uppercase tracking-wider">Projects</div>
             </motion.div>
@@ -239,7 +247,7 @@ export default function Hero() {
               <div className="text-6xl xl:text-7xl font-black text-white mb-2" style={{
                 textShadow: '0 0 20px rgba(59,130,246,0.6), 0 0 40px rgba(59,130,246,0.3)',
               }}>
-                10+
+                05+
               </div>
               <div className="text-white/70 text-base uppercase tracking-wider">Clients</div>
             </motion.div>
@@ -252,7 +260,7 @@ export default function Hero() {
               <div className="text-6xl xl:text-7xl font-black text-white mb-2" style={{
                 textShadow: '0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)',
               }}>
-                3+
+                2+
               </div>
               <div className="text-white/70 text-base uppercase tracking-wider">Years Experience</div>
             </motion.div>

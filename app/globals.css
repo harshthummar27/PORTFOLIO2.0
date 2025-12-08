@@ -155,5 +155,15 @@ body {
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.3),
                 0 0 40px rgba(168, 85, 247, 0.1);
   }
+  
+  /* Hide scrollbar utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
 }
 
