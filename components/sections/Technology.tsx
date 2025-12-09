@@ -104,7 +104,7 @@ export default function Technology() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 8,
+            duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -116,7 +116,7 @@ export default function Technology() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 10,
+            duration: 5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -130,7 +130,7 @@ export default function Technology() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium mb-6">
@@ -155,7 +155,7 @@ export default function Technology() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="mb-12 md:mb-16"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 text-center">
@@ -170,7 +170,7 @@ export default function Technology() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  transition={{ duration: 0.25, delay: 0.2 + index * 0.05 }}
                   className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300 group cursor-default"
                 >
                   <div
@@ -198,7 +198,7 @@ export default function Technology() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
+                transition={{ duration: 0.4, delay: categoryIndex * 0.05 }}
                 className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden"
               >
                 {/* Gradient border glow */}
@@ -224,8 +224,8 @@ export default function Technology() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{
-                          duration: 0.5,
-                          delay: categoryIndex * 0.1 + techIndex * 0.05,
+                          duration: 0.25,
+                          delay: categoryIndex * 0.05 + techIndex * 0.025,
                         }}
                         className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300"
                       >
@@ -243,8 +243,8 @@ export default function Technology() {
                             whileInView={{ width: `${tech.level}%` }}
                             viewport={{ once: true }}
                             transition={{
-                              duration: 1,
-                              delay: categoryIndex * 0.1 + techIndex * 0.1 + 0.3,
+                              duration: 0.5,
+                              delay: categoryIndex * 0.05 + techIndex * 0.05 + 0.15,
                               ease: "easeOut",
                             }}
                             className={`h-full bg-gradient-to-r ${tech.color} rounded-full`}
@@ -267,7 +267,7 @@ export default function Technology() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className="mt-16 text-center"
         >
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden inline-block">

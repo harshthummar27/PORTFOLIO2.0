@@ -3,25 +3,19 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   useEffect(() => {
-    // Lazy load video when component mounts
-    setShouldLoadVideo(true);
-  }, []);
-
-  useEffect(() => {
-    // Ensure video plays on mobile devices after video loads
-    if (videoRef.current && shouldLoadVideo) {
+    // Ensure video plays on mobile devices
+    if (videoRef.current) {
       videoRef.current.play().catch(() => {
         // Video autoplay prevented - silent fail
       });
     }
-  }, [shouldLoadVideo]);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.querySelector(sectionId);
@@ -38,22 +32,20 @@ export default function Hero() {
       {/* Fallback Background (in case video doesn't load) */}
       <div className="absolute inset-0 bg-black z-0"></div>
 
-      {/* Video Background - Lazy Loaded */}
-      {shouldLoadVideo && (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover z-[1]"
-          style={{ objectFit: 'cover' }}
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      )}
+      {/* Video Background */}
+      <video
+        ref={videoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover z-[1]"
+        style={{ objectFit: 'cover' }}
+      >
+        <source src="/hero.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       {/* Blurred Background - Developer Workspace Environment */}
       <div className="absolute inset-0 bg-black/40 md:bg-black/30 z-[2]">
@@ -80,7 +72,7 @@ export default function Hero() {
             scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 5,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -92,7 +84,7 @@ export default function Hero() {
             scale: [1.1, 1, 1.1],
           }}
           transition={{
-            duration: 6,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -104,7 +96,7 @@ export default function Hero() {
             scale: [1, 1.3, 1],
           }}
           transition={{
-            duration: 7,
+            duration: 3.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -127,7 +119,7 @@ export default function Hero() {
             <motion.h1
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black text-white leading-[0.95] tracking-tight mb-4 sm:mb-6"
               style={{
                 fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
@@ -149,7 +141,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="mb-4 sm:mb-6"
             >
               <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white/90 tracking-tight">
@@ -161,7 +153,7 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
               className="text-base sm:text-lg md:text-xl text-white/70 mb-6 sm:mb-8 max-w-2xl leading-relaxed"
             >
               Crafting modern web experiences with Next.js, React, Laravel, Node.js, and Framework/Library technologies.
@@ -171,14 +163,14 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
               className="lg:hidden w-full mt-8 sm:mt-10"
             >
               <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 w-full">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1 }}
+                  transition={{ duration: 0.3, delay: 0.5 }}
                   className="text-center px-2 sm:px-0"
                 >
                   <div className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 sm:mb-2 leading-none" style={{
@@ -191,7 +183,7 @@ export default function Hero() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1.2 }}
+                  transition={{ duration: 0.3, delay: 0.6 }}
                   className="text-center px-2 sm:px-0"
                 >
                   <div className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 sm:mb-2 leading-none" style={{
@@ -204,7 +196,7 @@ export default function Hero() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1.4 }}
+                  transition={{ duration: 0.3, delay: 0.7 }}
                   className="text-center px-2 sm:px-0"
                 >
                   <div className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 sm:mb-2 leading-none" style={{
@@ -222,7 +214,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
             className="hidden lg:flex lg:w-auto lg:flex-col gap-8"
           >
             <motion.div
@@ -273,7 +265,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
           className="max-w-4xl mx-auto"
         >
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden">

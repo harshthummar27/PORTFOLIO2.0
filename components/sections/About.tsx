@@ -67,7 +67,7 @@ export default function About() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 8,
+            duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -79,7 +79,7 @@ export default function About() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 10,
+            duration: 5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -93,7 +93,7 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium mb-6">
@@ -120,7 +120,7 @@ export default function About() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="space-y-6"
           >
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
@@ -160,7 +160,7 @@ export default function About() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             className="space-y-6"
           >
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
@@ -193,8 +193,8 @@ export default function About() {
                             whileInView={{ width: `${skill.level}%` }}
                             viewport={{ once: true }}
                             transition={{
-                              duration: 1,
-                              delay: 0.6 + index * 0.1,
+                              duration: 0.5,
+                              delay: 0.3 + index * 0.05,
                               ease: "easeOut",
                             }}
                             className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
@@ -217,7 +217,7 @@ export default function About() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16"
         >
           {achievements.map((achievement, index) => {
@@ -228,7 +228,7 @@ export default function About() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                transition={{ duration: 0.25, delay: 0.4 + index * 0.05 }}
                 className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300 group"
               >
                 <div className="flex justify-center mb-4">
@@ -250,7 +250,7 @@ export default function About() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
           className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden"
         >
           {/* Gradient border glow */}
@@ -267,7 +267,7 @@ export default function About() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 1 + index * 0.05 }}
+                  transition={{ duration: 0.15, delay: 0.5 + index * 0.025 }}
                   className="px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg text-white hover:bg-white/10 hover:border-white/30 transition-all duration-200 cursor-default"
                 >
                   <span className="text-sm md:text-base font-medium">

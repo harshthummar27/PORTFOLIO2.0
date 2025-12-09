@@ -43,7 +43,7 @@ export default function PortfolioProjects() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 8,
+            duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -55,7 +55,7 @@ export default function PortfolioProjects() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 10,
+            duration: 5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -69,7 +69,7 @@ export default function PortfolioProjects() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-12 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium mb-6">
@@ -94,7 +94,7 @@ export default function PortfolioProjects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {allCategories.map((category) => (
@@ -122,7 +122,7 @@ export default function PortfolioProjects() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="group"
               >
                 <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative hover:bg-white/10 transition-all duration-300 h-full flex flex-col">
@@ -220,7 +220,7 @@ export default function PortfolioProjects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
           className="text-center mt-16"
         >
           <Link

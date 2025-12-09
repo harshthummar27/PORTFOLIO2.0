@@ -106,7 +106,7 @@ export default function Contact() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 8,
+            duration: 4,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -118,7 +118,7 @@ export default function Contact() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 10,
+            duration: 5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -132,7 +132,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium mb-6">
@@ -159,7 +159,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
               {/* Gradient border glow */}
@@ -297,7 +297,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             className="space-y-6"
           >
             {/* Contact Information Cards */}
@@ -309,7 +309,7 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
                 >
                   <a
                     href={info.link}
@@ -340,7 +340,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.9 }}
+              transition={{ duration: 0.3, delay: 0.45 }}
               className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6"
             >
               <h4 className="text-white font-semibold text-lg mb-4">
@@ -370,7 +370,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 1 }}
+              transition={{ duration: 0.3, delay: 0.5 }}
               className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6"
             >
               <h4 className="text-white font-semibold text-lg mb-3">
