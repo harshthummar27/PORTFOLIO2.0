@@ -2,16 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import {
-  Github,
-  Globe,
-  ArrowRight,
-} from "lucide-react";
+import { Github, Globe, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { portfolioProjects } from "@/data/portfolio";
 
 export default function PortfolioProjects() {
-
   return (
     <section className="relative min-h-[90vh] pt-24 md:pt-28 pb-16 md:pb-24 lg:pb-32 overflow-hidden">
       {/* Background with gradient overlay */}
@@ -187,5 +182,3 @@ export default function PortfolioProjects() {
     </section>
   );
 }
-
-

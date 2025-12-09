@@ -26,7 +26,7 @@ const experiences = [
       "Mentored junior developers and established coding standards",
       "Led migration to microservices architecture",
     ],
-    technologies: [ 
+    technologies: [
       "UI freameworks & Libraries",
       "javaScript",
       "html-css",
@@ -274,7 +274,9 @@ export default function Experience() {
                           </div>
                           <div className="flex items-center gap-2 text-white/70">
                             <MapPin className="w-4 h-4" />
-                            <span className="text-sm">{experience.location}</span>
+                            <span className="text-sm">
+                              {experience.location}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -398,4 +400,3 @@ export default function Experience() {
     </section>
   );
 }
-

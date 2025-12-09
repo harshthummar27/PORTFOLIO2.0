@@ -11,9 +11,11 @@ interface PageProps {
   };
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const project = getProjectBySlug(params.slug);
-  
+
   if (!project) {
     return {
       title: "Project Not Found | Harsh Thummar",
@@ -41,4 +43,3 @@ export default function PortfolioItemPage({ params }: PageProps) {
     </main>
   );
 }
-

@@ -1,8 +1,4 @@
-import {
-  Globe,
-  Briefcase,
-  TrendingUp,
-} from "lucide-react";
+import { Globe, Briefcase, TrendingUp } from "lucide-react";
 
 export interface PortfolioProject {
   id: number;
@@ -35,7 +31,14 @@ export const portfolioProjects: PortfolioProject[] = [
     longDescription:
       "VettedPool is a full-stack job portal application built with React and Laravel. The platform provides a seamless experience for both job seekers and employers. Features include user authentication, job posting and management, advanced search and filtering, application tracking, resume upload, employer dashboard, candidate management, email notifications, and responsive design. The platform helps streamline the hiring process and connects talented professionals with opportunities.",
     category: "Full-Stack",
-    technologies: ["React", "Laravel", "PHP", "MySQL", "REST API", "Tailwind CSS"],
+    technologies: [
+      "React",
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "REST API",
+      "Tailwind CSS",
+    ],
     liveUrl: "https://vettedpool.com",
     githubUrl: "https://github.com",
     featured: true,
@@ -69,7 +72,14 @@ export const portfolioProjects: PortfolioProject[] = [
     longDescription:
       "HSFIN is a personal finance management application built with React.js, Node.js, and MongoDB Atlas. The platform helps users manage their finances effectively with features including expense tracking, income management, budget creation and monitoring, financial goal setting, transaction categorization, detailed analytics and reports, data visualization with charts, secure user authentication, and cloud storage with MongoDB Atlas. The application provides insights into spending patterns and helps users achieve their financial goals.",
     category: "Full-Stack",
-    technologies: ["React.js", "Node.js", "MongoDB Atlas", "Express", "JWT", "Chart.js"],
+    technologies: [
+      "React.js",
+      "Node.js",
+      "MongoDB Atlas",
+      "Express",
+      "JWT",
+      "Chart.js",
+    ],
     liveUrl: "https://hsfin.vercel.app/",
     githubUrl: "https://github.com",
     featured: true,
@@ -103,4 +113,3 @@ export function getProjectBySlug(slug: string): PortfolioProject | undefined {
 export function getProjectById(id: number): PortfolioProject | undefined {
   return portfolioProjects.find((project) => project.id === id);
 }
-

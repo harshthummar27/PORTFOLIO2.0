@@ -23,9 +23,17 @@ const quickLinks = [
 
 const socialLinks = [
   { name: "Email", icon: Mail, href: "mailto:harshthummar542@gmial.com" },
-  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/harrsh.patell" },
+  {
+    name: "Instagram",
+    icon: Instagram,
+    href: "https://www.instagram.com/harrsh.patell",
+  },
   { name: "X (Twitter)", icon: Twitter, href: "https://x.com/HP878700" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/harsh-thummar27/" },
+  {
+    name: "LinkedIn",
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/harsh-thummar27/",
+  },
   { name: "GitHub", icon: Github, href: "https://github.com/harshthummar27/" },
 ];
 

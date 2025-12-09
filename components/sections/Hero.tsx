@@ -24,8 +24,8 @@ export default function Hero() {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
@@ -36,7 +36,6 @@ export default function Hero() {
       });
     }
   }, [shouldLoadVideo]);
-
 
   return (
     <section
@@ -56,7 +55,7 @@ export default function Hero() {
           playsInline
           preload={isMobile ? "metadata" : "auto"}
           className="absolute inset-0 w-full h-full object-cover z-[1]"
-          style={{ objectFit: 'cover' }}
+          style={{ objectFit: "cover" }}
         >
           <source src="/hero.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -69,7 +68,7 @@ export default function Hero() {
         <div className="absolute inset-0 opacity-20">
           {/* Code-like grid pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.1)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-          
+
           {/* Blurred workspace elements */}
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-lg blur-3xl rotate-12"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-lg blur-3xl -rotate-12"></div>
@@ -139,9 +138,10 @@ export default function Hero() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black text-white leading-[0.95] tracking-tight mb-4 sm:mb-6"
               style={{
                 fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
-                textShadow: '0 0 30px rgba(168,85,247,0.5), 0 0 60px rgba(59,130,246,0.3)',
+                textShadow:
+                  "0 0 30px rgba(168,85,247,0.5), 0 0 60px rgba(59,130,246,0.3)",
                 fontWeight: 900,
-                letterSpacing: '-0.03em',
+                letterSpacing: "-0.03em",
               }}
             >
               HARSH
@@ -172,7 +172,8 @@ export default function Hero() {
               transition={{ duration: 0.4, delay: 0.3 }}
               className="text-base sm:text-lg md:text-xl text-white/70 mb-6 sm:mb-8 max-w-2xl leading-relaxed"
             >
-              Crafting modern web experiences with Next.js, React, Laravel, Node.js, and Framework/Library technologies.
+              Crafting modern web experiences with Next.js, React, Laravel,
+              Node.js, and Framework/Library technologies.
             </motion.p>
 
             {/* Stats Row - Mobile: Show below description */}
@@ -189,12 +190,18 @@ export default function Hero() {
                   transition={{ duration: 0.3, delay: 0.5 }}
                   className="text-center px-2 sm:px-0"
                 >
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 sm:mb-2 leading-none" style={{
-                    textShadow: '0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)',
-                  }}>
+                  <div
+                    className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 sm:mb-2 leading-none"
+                    style={{
+                      textShadow:
+                        "0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)",
+                    }}
+                  >
                     25+
                   </div>
-                  <div className="text-white/70 text-[10px] sm:text-xs md:text-sm uppercase tracking-wider leading-tight">Projects</div>
+                  <div className="text-white/70 text-[10px] sm:text-xs md:text-sm uppercase tracking-wider leading-tight">
+                    Projects
+                  </div>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -202,12 +209,18 @@ export default function Hero() {
                   transition={{ duration: 0.3, delay: 0.6 }}
                   className="text-center px-2 sm:px-0"
                 >
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 sm:mb-2 leading-none" style={{
-                    textShadow: '0 0 20px rgba(59,130,246,0.6), 0 0 40px rgba(59,130,246,0.3)',
-                  }}>
+                  <div
+                    className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 sm:mb-2 leading-none"
+                    style={{
+                      textShadow:
+                        "0 0 20px rgba(59,130,246,0.6), 0 0 40px rgba(59,130,246,0.3)",
+                    }}
+                  >
                     10+
                   </div>
-                  <div className="text-white/70 text-[10px] sm:text-xs md:text-sm uppercase tracking-wider leading-tight">Clients</div>
+                  <div className="text-white/70 text-[10px] sm:text-xs md:text-sm uppercase tracking-wider leading-tight">
+                    Clients
+                  </div>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -215,12 +228,18 @@ export default function Hero() {
                   transition={{ duration: 0.3, delay: 0.7 }}
                   className="text-center px-2 sm:px-0"
                 >
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 sm:mb-2 leading-none" style={{
-                    textShadow: '0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)',
-                  }}>
+                  <div
+                    className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 sm:mb-2 leading-none"
+                    style={{
+                      textShadow:
+                        "0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)",
+                    }}
+                  >
                     3+
                   </div>
-                  <div className="text-white/70 text-[10px] sm:text-xs md:text-sm uppercase tracking-wider leading-tight">Years</div>
+                  <div className="text-white/70 text-[10px] sm:text-xs md:text-sm uppercase tracking-wider leading-tight">
+                    Years
+                  </div>
                 </motion.div>
               </div>
             </motion.div>
@@ -239,12 +258,18 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 1 }}
               className="text-right"
             >
-              <div className="text-6xl xl:text-7xl font-black text-white mb-2" style={{
-                textShadow: '0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)',
-              }}>
+              <div
+                className="text-6xl xl:text-7xl font-black text-white mb-2"
+                style={{
+                  textShadow:
+                    "0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)",
+                }}
+              >
                 05+
               </div>
-              <div className="text-white/70 text-base uppercase tracking-wider">Projects</div>
+              <div className="text-white/70 text-base uppercase tracking-wider">
+                Projects
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -252,12 +277,18 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 1.2 }}
               className="text-right"
             >
-              <div className="text-6xl xl:text-7xl font-black text-white mb-2" style={{
-                textShadow: '0 0 20px rgba(59,130,246,0.6), 0 0 40px rgba(59,130,246,0.3)',
-              }}>
+              <div
+                className="text-6xl xl:text-7xl font-black text-white mb-2"
+                style={{
+                  textShadow:
+                    "0 0 20px rgba(59,130,246,0.6), 0 0 40px rgba(59,130,246,0.3)",
+                }}
+              >
                 05+
               </div>
-              <div className="text-white/70 text-base uppercase tracking-wider">Clients</div>
+              <div className="text-white/70 text-base uppercase tracking-wider">
+                Clients
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -265,12 +296,18 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 1.4 }}
               className="text-right"
             >
-              <div className="text-6xl xl:text-7xl font-black text-white mb-2" style={{
-                textShadow: '0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)',
-              }}>
+              <div
+                className="text-6xl xl:text-7xl font-black text-white mb-2"
+                style={{
+                  textShadow:
+                    "0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)",
+                }}
+              >
                 2+
               </div>
-              <div className="text-white/70 text-base uppercase tracking-wider">Years Experience</div>
+              <div className="text-white/70 text-base uppercase tracking-wider">
+                Years Experience
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -289,7 +326,7 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
             {/* Inner border */}
             <div className="absolute inset-[1px] rounded-2xl border border-white/5"></div>
-            
+
             <div className="relative z-10">
               {/* Portfolio Badge */}
               <div className="mb-6">
@@ -300,7 +337,9 @@ export default function Hero() {
 
               {/* Intro Paragraph */}
               <p className="text-white/70 text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 max-w-3xl">
-                I design and build clean, scalable, and high-performance digital products. Explore my work and see how I bring ideas to life with code.
+                I design and build clean, scalable, and high-performance digital
+                products. Explore my work and see how I bring ideas to life with
+                code.
               </p>
 
               {/* Button */}

@@ -2,12 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  User,
-} from "lucide-react";
+import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
 import Link from "next/link";
 import type { BlogPost } from "@/data/blog";
 
@@ -101,7 +96,13 @@ export default function BlogDetail({ post }: BlogDetailProps) {
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+              <span>
+                {new Date(post.date).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5" />
@@ -139,7 +140,7 @@ export default function BlogDetail({ post }: BlogDetailProps) {
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
             {/* Gradient border glow */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-50 blur-xl"></div>
-            
+
             <div className="relative z-10">
               {/* Content */}
               <div className="prose prose-invert prose-lg max-w-none">
@@ -154,4 +155,3 @@ export default function BlogDetail({ post }: BlogDetailProps) {
     </section>
   );
 }
-

@@ -186,10 +186,15 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-50 blur-xl"></div>
                 <div className="relative z-10 space-y-6">
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-4">Challenges</h3>
+                    <h3 className="text-xl font-bold text-white mb-4">
+                      Challenges
+                    </h3>
                     <ul className="space-y-2">
                       {project.challenges.map((challenge, index) => (
-                        <li key={index} className="text-white/70 flex items-start gap-2">
+                        <li
+                          key={index}
+                          className="text-white/70 flex items-start gap-2"
+                        >
                           <span className="text-purple-400 mt-1">▸</span>
                           <span>{challenge}</span>
                         </li>
@@ -197,10 +202,15 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-4">Solutions</h3>
+                    <h3 className="text-xl font-bold text-white mb-4">
+                      Solutions
+                    </h3>
                     <ul className="space-y-2">
                       {project.solutions.map((solution, index) => (
-                        <li key={index} className="text-white/70 flex items-start gap-2">
+                        <li
+                          key={index}
+                          className="text-white/70 flex items-start gap-2"
+                        >
                           <CheckCircle2 className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                           <span>{solution}</span>
                         </li>
@@ -223,7 +233,9 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-50 blur-xl"></div>
               <div className="relative z-10">
-                <h3 className="text-xl font-bold text-white mb-4">Technologies</h3>
+                <h3 className="text-xl font-bold text-white mb-4">
+                  Technologies
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <span
@@ -250,7 +262,10 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
                   <h3 className="text-xl font-bold text-white mb-4">Results</h3>
                   <ul className="space-y-3">
                     {project.results.map((result, index) => (
-                      <li key={index} className="text-white/80 flex items-start gap-2">
+                      <li
+                        key={index}
+                        className="text-white/80 flex items-start gap-2"
+                      >
                         <CheckCircle2 className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                         <span>{result}</span>
                       </li>
@@ -265,4 +280,3 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
     </section>
   );
 }
-

@@ -39,10 +39,30 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { name: "GitHub", icon: Github, href: "https://github.com", color: "from-gray-500 to-gray-600" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com", color: "from-blue-500 to-blue-600" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com", color: "from-cyan-500 to-blue-500" },
-  { name: "Instagram", icon: Instagram, href: "https://instagram.com", color: "from-pink-500 to-purple-500" },
+  {
+    name: "GitHub",
+    icon: Github,
+    href: "https://github.com",
+    color: "from-gray-500 to-gray-600",
+  },
+  {
+    name: "LinkedIn",
+    icon: Linkedin,
+    href: "https://linkedin.com",
+    color: "from-blue-500 to-blue-600",
+  },
+  {
+    name: "Twitter",
+    icon: Twitter,
+    href: "https://twitter.com",
+    color: "from-cyan-500 to-blue-500",
+  },
+  {
+    name: "Instagram",
+    icon: Instagram,
+    href: "https://instagram.com",
+    color: "from-pink-500 to-purple-500",
+  },
 ];
 
 export default function Contact() {
@@ -53,7 +73,9 @@ export default function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -74,7 +96,7 @@ export default function Contact() {
       setIsSubmitting(false);
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-      
+
       // Reset success message after 3 seconds
       setTimeout(() => {
         setSubmitStatus("idle");
@@ -147,8 +169,8 @@ export default function Contact() {
             </span>
           </h2>
           <p className="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Have a project in mind? Let's discuss how we can bring your ideas
-            to life. I'm always open to new opportunities and collaborations.
+            Have a project in mind? Let's discuss how we can bring your ideas to
+            life. I'm always open to new opportunities and collaborations.
           </p>
         </motion.div>
 
@@ -387,4 +409,3 @@ export default function Contact() {
     </section>
   );
 }
-

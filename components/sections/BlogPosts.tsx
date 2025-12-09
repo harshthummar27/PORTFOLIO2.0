@@ -69,7 +69,8 @@ export default function BlogPosts() {
             </span>
           </h1>
           <p className="text-white/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Explore my thoughts on web development, technology trends, and best practices.
+            Explore my thoughts on web development, technology trends, and best
+            practices.
           </p>
         </motion.div>
 
@@ -101,7 +102,9 @@ export default function BlogPosts() {
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500/30 to-blue-500/30 border border-white/20 flex items-center justify-center shadow-lg">
-                          <span className="text-2xl font-black text-white">{post.category.charAt(0)}</span>
+                          <span className="text-2xl font-black text-white">
+                            {post.category.charAt(0)}
+                          </span>
                         </div>
                       </div>
                     )}
@@ -129,7 +132,13 @@ export default function BlogPosts() {
                       </div>
                       <div className="flex items-center gap-1.5">
                         <Calendar className="w-3 h-3" />
-                        <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                        <span>
+                          {new Date(post.date).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          })}
+                        </span>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <Clock className="w-3 h-3" />
@@ -169,4 +178,3 @@ export default function BlogPosts() {
     </section>
   );
 }
-

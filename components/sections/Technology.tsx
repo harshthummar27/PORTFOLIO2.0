@@ -26,7 +26,11 @@ const techCategories = [
       { name: "Javascript ", level: 98, color: "from-blue-500 to-cyan-500" },
       { name: "TypeScript", level: 90, color: "from-blue-500 to-indigo-500" },
       { name: "Tailwind CSS", level: 95, color: "from-cyan-500 to-teal-500" },
-      { name: "Framer Motion", level: 85, color: "from-pink-500 to-purple-500" },
+      {
+        name: "Framer Motion",
+        level: 85,
+        color: "from-pink-500 to-purple-500",
+      },
     ],
   },
   {
@@ -58,25 +62,59 @@ const techCategories = [
       { name: "Linux", level: 88, color: "from-yellow-500 to-orange-500" },
     ],
   },
-  
+
   {
     title: "Mobile & Design",
     icon: Smartphone,
     technologies: [
       { name: "Figma", level: 90, color: "from-purple-500 to-pink-500" },
       { name: "UI/UX Design", level: 88, color: "from-pink-500 to-rose-500" },
-      { name: "Responsive Design", level: 95, color: "from-cyan-500 to-blue-500" },
+      {
+        name: "Responsive Design",
+        level: 95,
+        color: "from-cyan-500 to-blue-500",
+      },
     ],
   },
 ];
 
 const featuredTech = [
-  { name: "Next.js", icon: Code, description: "React Framework", color: "from-purple-500 to-blue-500" },
-  { name: "React.JS", icon: Box, description: "UI Library", color: "from-blue-500 to-cyan-500" },
-  { name: "Javascript, TypeScript", icon: Cpu, description: "Type Safety", color: "from-blue-500 to-indigo-500" },
-  { name: "Node.js", icon: Server, description: "Runtime", color: "from-green-500 to-emerald-500" },
-  { name: "MongoDB, SQL", icon: Database, description: "Database", color: "from-blue-500 to-indigo-500" },
-  { name: "Docker, Git", icon: Box, description: "Containerization", color: "from-blue-500 to-cyan-500" },
+  {
+    name: "Next.js",
+    icon: Code,
+    description: "React Framework",
+    color: "from-purple-500 to-blue-500",
+  },
+  {
+    name: "React.JS",
+    icon: Box,
+    description: "UI Library",
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    name: "Javascript, TypeScript",
+    icon: Cpu,
+    description: "Type Safety",
+    color: "from-blue-500 to-indigo-500",
+  },
+  {
+    name: "Node.js",
+    icon: Server,
+    description: "Runtime",
+    color: "from-green-500 to-emerald-500",
+  },
+  {
+    name: "MongoDB, SQL",
+    icon: Database,
+    description: "Database",
+    color: "from-blue-500 to-indigo-500",
+  },
+  {
+    name: "Docker, Git",
+    icon: Box,
+    description: "Containerization",
+    color: "from-blue-500 to-cyan-500",
+  },
 ];
 
 export default function Technology() {
@@ -244,7 +282,8 @@ export default function Technology() {
                             viewport={{ once: true }}
                             transition={{
                               duration: 0.5,
-                              delay: categoryIndex * 0.05 + techIndex * 0.05 + 0.15,
+                              delay:
+                                categoryIndex * 0.05 + techIndex * 0.05 + 0.15,
                               ease: "easeOut",
                             }}
                             className={`h-full bg-gradient-to-r ${tech.color} rounded-full`}
@@ -278,8 +317,8 @@ export default function Technology() {
               <GitBranch className="w-12 h-12 text-white/70 mx-auto mb-4" />
               <p className="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed">
                 Continuously learning and adapting to new technologies to stay
-                at the forefront of web development. Always exploring the
-                latest tools and best practices.
+                at the forefront of web development. Always exploring the latest
+                tools and best practices.
               </p>
             </div>
           </div>
@@ -288,4 +327,3 @@ export default function Technology() {
     </section>
   );
 }
-
