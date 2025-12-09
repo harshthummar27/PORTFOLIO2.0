@@ -10,15 +10,15 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 
 const quickLinks = [
-  { name: "About Me", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Experience", href: "#experience" },
-  { name: "Services", href: "#services" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Technology", href: "/technology" },
+  { name: "Experience", href: "/experience" },
+  { name: "Portfolio", href: "/portfolio" },
+  // { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const socialLinks = [
@@ -31,35 +31,29 @@ const socialLinks = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState("");
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle newsletter subscription
-    setEmail("");
-  };
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.querySelector(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <footer className="relative mt-20 overflow-hidden">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-black">
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-purple-900/20 to-transparent"></div>
+      {/* Professional Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black">
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+        {/* Professional gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-gray-950/50 to-transparent"></div>
+        {/* Subtle accent glow */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>
 
       {/* Main Footer Container */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Glass-morphism Footer Card */}
-        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl relative overflow-hidden mb-8">
-          {/* Neon gradient border glow */}
-          <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/20 via-cyan-500/20 to-blue-500/20 opacity-50 blur-2xl"></div>
-          <div className="absolute inset-[1px] rounded-3xl bg-gradient-to-r from-purple-500/10 via-transparent to-blue-500/10"></div>
+        {/* Professional Footer Card */}
+        <div className="bg-gradient-to-br from-gray-900/80 via-gray-950/90 to-black/95 backdrop-blur-2xl border border-white/5 rounded-2xl p-8 md:p-12 lg:p-16 shadow-2xl relative overflow-hidden mb-8">
+          {/* Subtle border glow */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
+          {/* Inner border */}
+          <div className="absolute inset-[1px] rounded-2xl border border-white/5"></div>
 
           <div className="relative z-10">
             {/* Three Column Layout */}
@@ -71,7 +65,7 @@ export default function Footer() {
                   <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/30 to-blue-500/30 border-2 border-white/20 backdrop-blur-sm p-0.5 overflow-hidden">
                     <div className="w-full h-full rounded-full overflow-hidden bg-black">
                       <Image
-                        src="/images/me.JPG"
+                        src="/images/me.jpg"
                         alt="Harsh Thummar"
                         width={64}
                         height={64}
@@ -82,9 +76,9 @@ export default function Footer() {
                   </div>
                 </div>
                 <h2 className="text-white font-bold text-xl md:text-2xl mb-2 tracking-tight">
-                  Portfolio of Harsh Thummar
+                  Harsh Thummar
                 </h2>
-                <p className="text-white/70 text-sm md:text-base leading-relaxed">
+                <p className="text-white/60 text-sm md:text-base leading-relaxed">
                   Full-Stack Developer & UI Builder
                 </p>
               </div>
@@ -97,62 +91,39 @@ export default function Footer() {
                 <ul className="space-y-3">
                   {quickLinks.map((link) => (
                     <li key={link.name}>
-                      <button
-                        onClick={() => scrollToSection(link.href)}
-                        className="text-white/70 hover:text-white transition-colors duration-200 text-sm group flex items-center gap-2 cursor-pointer"
+                      <Link
+                        href={link.href}
+                        className="text-white/60 hover:text-white transition-colors duration-200 text-sm group flex items-center gap-2 cursor-pointer font-medium"
                       >
-                        <span className="group-hover:translate-x-1 transition-transform duration-200">
+                        <span className="group-hover:translate-x-1 transition-transform duration-200 text-purple-400/60 group-hover:text-purple-400">
                           →
                         </span>
                         {link.name}
-                      </button>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Third Column - Newsletter + Socials */}
+              {/* Third Column - Blog + Socials */}
               <div>
                 <h3 className="text-white font-semibold text-lg mb-6 tracking-wide">
-                  Get Updates
+                  Blogs
                 </h3>
-                {/* Newsletter Form */}
-                <form onSubmit={handleSubscribe} className="mb-8">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
-                      className="flex-1 px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/30 focus:bg-white/10 transition-all duration-200 text-sm"
-                      required
-                    />
-                    <div className="relative inline-block rounded-lg" style={{
-                      background: "linear-gradient(135deg, #a855f7, #3b82f6)",
-                      padding: "2px",
-                    }}>
-                      <button
-                        type="submit"
-                        className="px-6 py-3 rounded-lg font-semibold text-white transition-all duration-200 text-sm relative overflow-hidden group w-full cursor-pointer"
-                        style={{
-                          background: "rgba(0, 0, 0, 0.4)",
-                        }}
-                      >
-                        <span className="relative z-10 flex items-center gap-2">
-                          Subscribe
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </span>
-                        <span
-                          className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"
-                        ></span>
-                      </button>
-                    </div>
-                  </div>
-                </form>
+                {/* Blog Link */}
+                <div className="mb-8">
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 rounded-lg font-semibold text-white transition-all duration-200 text-sm shadow-lg hover:shadow-purple-500/50 group cursor-pointer"
+                  >
+                    <span>Read Blog</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
 
                 {/* Social Icons */}
                 <div>
-                  <h4 className="text-white/70 text-sm mb-4 uppercase tracking-wider">
+                  <h4 className="text-white/60 text-sm mb-4 uppercase tracking-wider font-medium">
                     Connect
                   </h4>
                   <div className="flex flex-wrap gap-3">
@@ -164,7 +135,7 @@ export default function Footer() {
                           href={social.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all duration-200 group"
+                          className="w-10 h-10 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all duration-200 group"
                           aria-label={social.name}
                         >
                           <Icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -178,28 +149,28 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 py-6 relative z-10">
+        {/* Bottom Bar - Professional Styling */}
+        <div className="border-t border-white/5 bg-gradient-to-r from-transparent via-white/5 to-transparent py-6 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Left - Links */}
             <div className="flex flex-wrap items-center gap-6 text-sm">
               <Link
                 href="#privacy"
-                className="text-white/60 hover:text-white transition-colors duration-200"
+                className="text-white/50 hover:text-white/80 transition-colors duration-200 font-medium"
               >
                 Privacy Policy
               </Link>
-              <span className="text-white/30">•</span>
+              <span className="text-white/20">•</span>
               <Link
                 href="#terms"
-                className="text-white/60 hover:text-white transition-colors duration-200"
+                className="text-white/50 hover:text-white/80 transition-colors duration-200 font-medium"
               >
                 Terms & Conditions
               </Link>
             </div>
 
             {/* Right - Copyright */}
-            <div className="text-white/60 text-sm">
+            <div className="text-white/50 text-sm font-medium">
               © {currentYear} Harsh Thummar. All rights reserved.
             </div>
           </div>

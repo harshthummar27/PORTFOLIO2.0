@@ -41,7 +41,7 @@ export const portfolioProjects: PortfolioProject[] = [
     featured: true,
     icon: Briefcase,
     color: "from-purple-500 to-blue-500",
-    image: "/api/placeholder/600/400",
+    image: "/images/vettedpool.png",
     year: "2024",
     client: "Job Portal Platform",
     challenges: [
@@ -70,12 +70,12 @@ export const portfolioProjects: PortfolioProject[] = [
       "HSFIN is a personal finance management application built with React.js, Node.js, and MongoDB Atlas. The platform helps users manage their finances effectively with features including expense tracking, income management, budget creation and monitoring, financial goal setting, transaction categorization, detailed analytics and reports, data visualization with charts, secure user authentication, and cloud storage with MongoDB Atlas. The application provides insights into spending patterns and helps users achieve their financial goals.",
     category: "Full-Stack",
     technologies: ["React.js", "Node.js", "MongoDB Atlas", "Express", "JWT", "Chart.js"],
-    liveUrl: "https://hsfin.com",
+    liveUrl: "https://hsfin.vercel.app/",
     githubUrl: "https://github.com",
     featured: true,
     icon: TrendingUp,
     color: "from-green-500 to-emerald-500",
-    image: "/api/placeholder/600/400",
+    image: "/images/HSFIN.png",
     year: "2024",
     client: "Personal Finance Platform",
     challenges: [

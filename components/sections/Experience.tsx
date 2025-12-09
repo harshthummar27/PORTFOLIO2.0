@@ -1,15 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Briefcase,
   Calendar,
   MapPin,
   ExternalLink,
-  Code,
   Database,
-  Smartphone,
-  Globe,
 } from "lucide-react";
 
 const experiences = [
@@ -19,6 +17,7 @@ const experiences = [
     role: "Junior Software Engineer",
     location: "Onsite",
     period: "2025 - Present",
+    website: "https://www.metizsoft.com/",
     description:
       "Leading development of scalable web applications using modern technologies. Collaborating with cross-functional teams to deliver high-quality products.",
     achievements: [
@@ -37,7 +36,7 @@ const experiences = [
       "Node.js",
       "SQl & MongoDB",
     ],
-    icon: Code,
+    image: "/images/metizsoft.jpg",
     color: "from-purple-500 to-blue-500",
   },
   {
@@ -46,6 +45,7 @@ const experiences = [
     role: "Javascript Developer",
     location: "Ahemdabad, Gujarat",
     period: "June 2024 - Nov 2024",
+    website: "https://www.vmukti.com/",
     description:
       "Developed and maintained multiple client projects, focusing on responsive design and optimal user experiences.",
     achievements: [
@@ -65,7 +65,7 @@ const experiences = [
       "Git",
       "Figma",
     ],
-    icon: Globe,
+    image: "/images/vmukti.jpg",
     color: "from-blue-500 to-cyan-500",
   },
   {
@@ -74,6 +74,7 @@ const experiences = [
     role: "ReactJs Developer Intern",
     location: "Gandhinagar, Gujarat",
     period: "6 Months",
+    website: "https://desireinfotech.biz/",
     description:
       "Built user-facing features for a fast-growing startup, focusing on mobile-first responsive design.",
     achievements: [
@@ -91,7 +92,7 @@ const experiences = [
       "REST APIs",
       "Git",
     ],
-    icon: Smartphone,
+    image: "/images/desire.webp",
     color: "from-cyan-500 to-purple-500",
   },
 ];
@@ -194,7 +195,6 @@ export default function Experience() {
         {/* Experience Timeline */}
         <div className="space-y-6 md:space-y-8 mb-12 md:mb-16">
           {experiences.map((experience, index) => {
-            const Icon = experience.icon;
             return (
               <motion.div
                 key={experience.id}
@@ -214,13 +214,37 @@ export default function Experience() {
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-50 blur-xl"></div>
 
                   <div className="relative z-10 flex flex-col md:flex-row gap-6">
-                    {/* Left Side - Icon and Timeline */}
+                    {/* Left Side - Company Image and Timeline */}
                     <div className="flex items-start gap-4 md:flex-col md:items-center md:w-24">
-                      <div
-                        className={`w-16 h-16 rounded-xl bg-gradient-to-br ${experience.color} border border-white/20 flex items-center justify-center flex-shrink-0 shadow-lg`}
-                      >
-                        <Icon className="w-8 h-8 text-white" />
-                      </div>
+                      {experience.website ? (
+                        <a
+                          href={experience.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`w-16 h-16 rounded-xl bg-gradient-to-br ${experience.color} border border-white/20 flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden hover:scale-110 hover:border-white/40 transition-all duration-300 cursor-pointer group`}
+                          aria-label={`Visit ${experience.company} website`}
+                        >
+                          <Image
+                            src={experience.image}
+                            alt={experience.company}
+                            width={64}
+                            height={64}
+                            className="w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                          />
+                        </a>
+                      ) : (
+                        <div
+                          className={`w-16 h-16 rounded-xl bg-gradient-to-br ${experience.color} border border-white/20 flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden`}
+                        >
+                          <Image
+                            src={experience.image}
+                            alt={experience.company}
+                            width={64}
+                            height={64}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
                       <div className="md:hidden">
                         <div className="text-white font-bold text-lg mb-1">
                           {experience.company}

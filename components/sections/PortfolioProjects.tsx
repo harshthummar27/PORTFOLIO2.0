@@ -1,26 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Github,
   Globe,
   ArrowRight,
-  Eye,
 } from "lucide-react";
 import Link from "next/link";
 import { portfolioProjects } from "@/data/portfolio";
 
-// Get unique categories from projects
-const allCategories = ["All", ...Array.from(new Set(portfolioProjects.map((p) => p.category)))];
-
 export default function PortfolioProjects() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const filteredProjects =
-    selectedCategory === "All"
-      ? portfolioProjects
-      : portfolioProjects.filter((project) => project.category === selectedCategory);
 
   return (
     <section className="relative min-h-[90vh] pt-24 md:pt-28 pb-16 md:pb-24 lg:pb-32 overflow-hidden">
@@ -89,33 +79,9 @@ export default function PortfolioProjects() {
           </p>
         </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
-          {allCategories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2.5 rounded-lg font-semibold text-sm md:text-base transition-all duration-200 cursor-pointer ${
-                selectedCategory === category
-                  ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg shadow-purple-500/50"
-                  : "bg-white/5 backdrop-blur-sm border border-white/10 text-white/70 hover:bg-white/10 hover:text-white"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
-
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {filteredProjects.map((project, index) => {
-            const Icon = project.icon;
+          {portfolioProjects.map((project, index) => {
             return (
               <motion.div
                 key={project.id}
@@ -129,25 +95,21 @@ export default function PortfolioProjects() {
                   {/* Gradient border glow */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-300"></div>
 
-                  {/* Project Image/Icon */}
+                  {/* Project Image */}
                   <div className="relative h-48 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20`}
                     ></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div
-                        className={`w-20 h-20 rounded-xl bg-gradient-to-br ${project.color} border border-white/20 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        <Icon className="w-10 h-10 text-white" />
+                    <div className="absolute inset-0 flex items-center justify-center p-4">
+                      <div className="relative w-full h-full rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-contain"
+                        />
                       </div>
                     </div>
-                    {project.featured && (
-                      <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-semibold rounded-full shadow-lg">
-                          Featured
-                        </span>
-                      </div>
-                    )}
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-medium rounded-full">
                         {project.category}
@@ -179,34 +141,24 @@ export default function PortfolioProjects() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-col gap-3 mt-auto">
-                      <Link
-                        href={`/portfolio/${project.slug}`}
-                        className="w-full px-4 py-2.5 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-lg font-semibold text-sm hover:from-purple-600 hover:to-blue-600 transition-all duration-200 flex items-center justify-center gap-2 group/btn shadow-lg hover:shadow-xl hover:shadow-purple-500/50 cursor-pointer"
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 px-4 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-lg font-semibold text-sm hover:bg-white/10 hover:border-white/30 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
                       >
-                        <Eye className="w-4 h-4" />
-                        View Details
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </Link>
-                      <div className="flex gap-3">
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 px-4 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-lg font-semibold text-sm hover:bg-white/10 hover:border-white/30 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
-                        >
-                          <Globe className="w-4 h-4" />
-                          Live
-                        </a>
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-4 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-lg font-semibold text-sm hover:bg-white/10 hover:border-white/30 transition-all duration-200 flex items-center justify-center cursor-pointer"
-                        >
-                          <Github className="w-4 h-4" />
-                        </a>
-                      </div>
+                        <Globe className="w-4 h-4" />
+                        Live
+                      </a>
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2.5 bg-white/5 backdrop-blur-sm border border-white/10 text-white rounded-lg font-semibold text-sm hover:bg-white/10 hover:border-white/30 transition-all duration-200 flex items-center justify-center cursor-pointer"
+                      >
+                        <Github className="w-4 h-4" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -235,4 +187,5 @@ export default function PortfolioProjects() {
     </section>
   );
 }
+
 

@@ -1,58 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Calendar, Clock, ArrowRight, User } from "lucide-react";
 import Link from "next/link";
-
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  date: string;
-  readTime: string;
-  category: string;
-  slug: string;
-  image?: string;
-}
-
-// Sample blog posts data
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    title: "Getting Started with Next.js 14 App Router",
-    excerpt: "Learn how to build modern web applications using Next.js 14's new App Router and React Server Components.",
-    content: "Full content here...",
-    author: "Harsh Thummar",
-    date: "2024-01-15",
-    readTime: "5 min read",
-    category: "Web Development",
-    slug: "getting-started-with-nextjs-14",
-  },
-  {
-    id: 2,
-    title: "Building Scalable React Applications",
-    excerpt: "Best practices and patterns for building large-scale React applications that are maintainable and performant.",
-    content: "Full content here...",
-    author: "Harsh Thummar",
-    date: "2024-01-10",
-    readTime: "8 min read",
-    category: "React",
-    slug: "building-scalable-react-applications",
-  },
-  {
-    id: 3,
-    title: "Laravel Best Practices for API Development",
-    excerpt: "Explore advanced Laravel techniques for building robust RESTful APIs with authentication and validation.",
-    content: "Full content here...",
-    author: "Harsh Thummar",
-    date: "2024-01-05",
-    readTime: "6 min read",
-    category: "Backend",
-    slug: "laravel-best-practices-api",
-  },
-];
+import { blogPosts } from "@/data/blog";
 
 export default function BlogPosts() {
   return (
@@ -137,13 +89,22 @@ export default function BlogPosts() {
                   {/* Gradient border glow */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-300"></div>
 
-                  {/* Post Image/Placeholder */}
+                  {/* Post Image */}
                   <div className="relative h-48 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-cyan-900/20 overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500/30 to-blue-500/30 border border-white/20 flex items-center justify-center shadow-lg">
-                        <span className="text-2xl font-black text-white">{post.category.charAt(0)}</span>
+                    {post.image ? (
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500/30 to-blue-500/30 border border-white/20 flex items-center justify-center shadow-lg">
+                          <span className="text-2xl font-black text-white">{post.category.charAt(0)}</span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-medium rounded-full">
                         {post.category}

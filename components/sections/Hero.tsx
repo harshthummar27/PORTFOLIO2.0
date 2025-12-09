@@ -1,51 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+  useEffect(() => {
+    // Detect mobile device
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      // Delay video loading on mobile for better performance
+      if (mobile) {
+        setTimeout(() => setShouldLoadVideo(true), 500);
+      } else {
+        setShouldLoadVideo(true);
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     // Ensure video plays on mobile devices
-    if (videoRef.current) {
+    if (videoRef.current && shouldLoadVideo) {
       videoRef.current.play().catch(() => {
         // Video autoplay prevented - silent fail
       });
     }
-  }, []);
+  }, [shouldLoadVideo]);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.querySelector(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-36 sm:pt-40 md:pt-32 xl:pt-24 pb-8 sm:pb-12"
+      className="relative overflow-hidden pt-20 sm:pt-24 md:pt-32 xl:pt-24 pb-8 sm:pb-12"
     >
       {/* Fallback Background (in case video doesn't load) */}
       <div className="absolute inset-0 bg-black z-0"></div>
 
-      {/* Video Background */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover z-[1]"
-        style={{ objectFit: 'cover' }}
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Video Background - Lazy load on mobile */}
+      {shouldLoadVideo && (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload={isMobile ? "metadata" : "auto"}
+          className="absolute inset-0 w-full h-full object-cover z-[1]"
+          style={{ objectFit: 'cover' }}
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
 
       {/* Blurred Background - Developer Workspace Environment */}
       <div className="absolute inset-0 bg-black/40 md:bg-black/30 z-[2]">
@@ -112,7 +128,7 @@ export default function Hero() {
 
       {/* Main Content Container */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-[4] w-full">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between py-8 sm:py-12 lg:py-20">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between py-4 sm:py-8 md:py-12 lg:py-20">
           {/* Left Side - Main Heading */}
           <div className="w-full lg:flex-1 lg:max-w-3xl mb-8 lg:mb-0">
             {/* Main Heading */}
@@ -260,7 +276,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Glass-morphism Card Below Hero */}
+      {/* Professional Card Below Hero */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-[4] pb-8 sm:pb-12 mt-4 sm:mt-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -268,39 +284,34 @@ export default function Hero() {
           transition={{ duration: 0.4, delay: 0.8 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden">
-            {/* Gradient border glow */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/20 via-cyan-500/20 to-blue-500/20 opacity-50 blur-xl"></div>
+          <div className="bg-gradient-to-br from-gray-900/80 via-gray-950/90 to-black/95 backdrop-blur-2xl border border-white/5 rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            {/* Subtle border glow */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
+            {/* Inner border */}
+            <div className="absolute inset-[1px] rounded-2xl border border-white/5"></div>
             
             <div className="relative z-10">
               {/* Portfolio Badge */}
               <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium">
+                <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500/10 to-blue-500/10 backdrop-blur-sm border border-white/10 rounded-full text-white/80 text-sm md:text-base font-medium">
                   PORTFOLIO 2025
                 </span>
               </div>
 
               {/* Intro Paragraph */}
-              <p className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 max-w-3xl">
+              <p className="text-white/70 text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 max-w-3xl">
                 I design and build clean, scalable, and high-performance digital products. Explore my work and see how I bring ideas to life with code.
               </p>
 
-              {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              {/* Button */}
+              <div className="flex justify-center sm:justify-start">
                 <Link
                   href="/portfolio"
                   className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-blue-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-purple-500/50 transform hover:-translate-y-1 text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  View Portfolio
+                  View Portfolio Projects
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <button
-                  onClick={() => scrollToSection("#contact")}
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white rounded-lg font-semibold hover:bg-white/20 hover:border-white/40 transition-all duration-200 text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer"
-                >
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-                  Contact Me
-                </button>
               </div>
             </div>
           </div>
