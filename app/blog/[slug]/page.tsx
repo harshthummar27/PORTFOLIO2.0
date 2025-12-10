@@ -50,10 +50,24 @@ export default async function BlogPostPage({ params }: PageProps) {
     // Increment views
     await BlogPost.updateOne({ slug }, { $inc: { views: 1 } });
 
+    // Transform MongoDB document to match BlogPost type
+    const transformedPost = {
+      id: post.id || Number(post._id),
+      title: post.title,
+      excerpt: post.excerpt,
+      content: post.content,
+      author: post.author,
+      date: post.date instanceof Date ? post.date.toISOString().split('T')[0] : post.date,
+      readTime: post.readTime,
+      category: post.category,
+      slug: post.slug,
+      image: post.image,
+    };
+
     return (
       <main className="min-h-screen bg-black text-white">
         <Header />
-        <BlogDetail post={post} />
+        <BlogDetail post={transformedPost} />
         <Footer />
       </main>
     );
