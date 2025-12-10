@@ -18,7 +18,7 @@ interface PortfolioDetailProps {
 }
 
 export default function PortfolioDetail({ project }: PortfolioDetailProps) {
-  const Icon = project.icon;
+  const Icon = project.icon || null;
 
   return (
     <section className="relative min-h-[85vh] pt-24 md:pt-28 pb-16 md:pb-24 lg:pb-32 overflow-hidden">
@@ -41,7 +41,7 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 4,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -53,7 +53,7 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -66,7 +66,7 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.15 }}
           className="mb-8"
         >
           <Link
@@ -82,14 +82,18 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.2 }}
           className="mb-12"
         >
           <div className="flex items-center gap-3 mb-6">
             <div
               className={`w-16 h-16 rounded-xl bg-gradient-to-br ${project.color} border border-white/20 flex items-center justify-center shadow-lg`}
             >
-              <Icon className="w-8 h-8 text-white" />
+              {Icon ? (
+                <Icon className="w-8 h-8 text-white" />
+              ) : (
+                <Globe className="w-8 h-8 text-white" />
+              )}
             </div>
             <div>
               <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-xs font-medium mb-2">
@@ -160,7 +164,7 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
+                transition={{ duration: 0.2, delay: 0.05 }}
                 className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden"
               >
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-50 blur-xl"></div>
@@ -180,7 +184,7 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
                 className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden"
               >
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-50 blur-xl"></div>
@@ -228,7 +232,7 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.15 }}
+              transition={{ duration: 0.2, delay: 0.075 }}
               className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-50 blur-xl"></div>
@@ -254,7 +258,7 @@ export default function PortfolioDetail({ project }: PortfolioDetailProps) {
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.25 }}
+                transition={{ duration: 0.2, delay: 0.125 }}
                 className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden"
               >
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-50 blur-xl"></div>

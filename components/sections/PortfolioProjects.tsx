@@ -4,9 +4,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Github, Globe, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { portfolioProjects } from "@/data/portfolio";
+import type { PortfolioProject } from "@/data/portfolio";
 
-export default function PortfolioProjects() {
+interface PortfolioProjectsProps {
+  projects: PortfolioProject[];
+}
+
+export default function PortfolioProjects({ projects }: PortfolioProjectsProps) {
   return (
     <section className="relative min-h-[90vh] pt-24 md:pt-28 pb-16 md:pb-24 lg:pb-32 overflow-hidden">
       {/* Background with gradient overlay */}
@@ -28,7 +32,7 @@ export default function PortfolioProjects() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 4,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -40,7 +44,7 @@ export default function PortfolioProjects() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -54,7 +58,7 @@ export default function PortfolioProjects() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.2 }}
           className="text-center mb-12 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium mb-6">
@@ -76,19 +80,24 @@ export default function PortfolioProjects() {
 
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {portfolioProjects.map((project, index) => {
+          {projects.length === 0 ? (
+            <div className="col-span-full text-center py-12">
+              <p className="text-white/60 text-lg">No projects found.</p>
+            </div>
+          ) : (
+            projects.map((project, index) => {
             return (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
+                transition={{ duration: 0.15, delay: index * 0.025 }}
                 className="group"
               >
-                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative hover:bg-white/10 transition-all duration-300 h-full flex flex-col">
+                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative hover:bg-white/10 transition-all duration-200 h-full flex flex-col">
                   {/* Gradient border glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-200"></div>
 
                   {/* Project Image */}
                   <div className="relative h-48 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
@@ -96,7 +105,7 @@ export default function PortfolioProjects() {
                       className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20`}
                     ></div>
                     <div className="absolute inset-0 flex items-center justify-center p-4">
-                      <div className="relative w-full h-full rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                      <div className="relative w-full h-full rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-200">
                         <Image
                           src={project.image}
                           alt={project.title}
@@ -114,7 +123,7 @@ export default function PortfolioProjects() {
 
                   {/* Project Content */}
                   <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 transition-all duration-300">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 transition-all duration-200">
                       {project.title}
                     </h3>
                     <p className="text-white/70 text-sm md:text-base mb-6 leading-relaxed flex-1">
@@ -159,7 +168,8 @@ export default function PortfolioProjects() {
                 </div>
               </motion.div>
             );
-          })}
+          })
+          )}
         </div>
 
         {/* Back to Home Link */}
@@ -167,7 +177,7 @@ export default function PortfolioProjects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.4 }}
+          transition={{ duration: 0.15, delay: 0.2 }}
           className="text-center mt-16"
         >
           <Link

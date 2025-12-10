@@ -37,7 +37,7 @@ export default function BuyTicketButton({
           {...props}
         >
           {/* Soft inner glow on hover */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/0 via-pink-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/0 via-pink-500/10 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
           
       {/* Text */}
       <span className="relative z-10">Get Touch</span>
@@ -45,7 +45,7 @@ export default function BuyTicketButton({
       </div>
       
       {/* Outer soft glow effect */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 blur-xl opacity-0 group-hover:opacity-50 -z-10 transition-opacity duration-300 pointer-events-none"></div>
+      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 blur-xl opacity-0 group-hover:opacity-50 -z-10 transition-opacity duration-200 pointer-events-none"></div>
     </div>
   );
 }

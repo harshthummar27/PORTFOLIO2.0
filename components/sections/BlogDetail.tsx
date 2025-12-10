@@ -32,7 +32,7 @@ export default function BlogDetail({ post }: BlogDetailProps) {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 4,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -44,7 +44,7 @@ export default function BlogDetail({ post }: BlogDetailProps) {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -57,7 +57,7 @@ export default function BlogDetail({ post }: BlogDetailProps) {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.15 }}
           className="mb-8"
         >
           <Link
@@ -73,7 +73,7 @@ export default function BlogDetail({ post }: BlogDetailProps) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.2 }}
           className="mb-12"
         >
           {/* Category Badge */}
@@ -116,7 +116,7 @@ export default function BlogDetail({ post }: BlogDetailProps) {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
+            transition={{ duration: 0.2, delay: 0.05 }}
             className="mb-12"
           >
             <div className="relative w-full h-64 md:h-96 lg:h-[500px] rounded-2xl overflow-hidden">
@@ -134,7 +134,7 @@ export default function BlogDetail({ post }: BlogDetailProps) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
+          transition={{ duration: 0.2, delay: 0.1 }}
           className="max-w-4xl mx-auto"
         >
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">

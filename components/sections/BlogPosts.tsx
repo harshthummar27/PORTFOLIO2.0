@@ -4,9 +4,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Calendar, Clock, ArrowRight, User } from "lucide-react";
 import Link from "next/link";
-import { blogPosts } from "@/data/blog";
+import type { BlogPost } from "@/data/blog";
 
-export default function BlogPosts() {
+interface BlogPostsProps {
+  posts: BlogPost[];
+}
+
+export default function BlogPosts({ posts }: BlogPostsProps) {
   return (
     <section className="relative min-h-[90vh] pt-24 md:pt-28 pb-16 md:pb-24 lg:pb-32 overflow-hidden">
       {/* Background with gradient overlay */}
@@ -28,7 +32,7 @@ export default function BlogPosts() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 4,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -40,7 +44,7 @@ export default function BlogPosts() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -54,7 +58,7 @@ export default function BlogPosts() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.2 }}
           className="text-center mb-12 md:mb-16"
         >
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium mb-6">
@@ -76,19 +80,24 @@ export default function BlogPosts() {
 
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {blogPosts.map((post, index) => (
+          {posts.length === 0 ? (
+            <div className="col-span-full text-center py-12">
+              <p className="text-white/60 text-lg">No blog posts found.</p>
+            </div>
+          ) : (
+            posts.map((post, index) => (
             <motion.article
               key={post.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
+              transition={{ duration: 0.15, delay: index * 0.025 }}
               className="group"
             >
               <Link href={`/blog/${post.slug}`} className="block h-full">
-                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative hover:bg-white/10 transition-all duration-300 h-full flex flex-col cursor-pointer">
+                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative hover:bg-white/10 transition-all duration-200 h-full flex flex-col cursor-pointer">
                   {/* Gradient border glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-200"></div>
 
                   {/* Post Image */}
                   <div className="relative h-48 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-cyan-900/20 overflow-hidden">
@@ -97,7 +106,7 @@ export default function BlogPosts() {
                         src={post.image}
                         alt={post.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-200"
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -117,7 +126,7 @@ export default function BlogPosts() {
 
                   {/* Post Content */}
                   <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 transition-all duration-300">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 transition-all duration-200">
                       {post.title}
                     </h3>
                     <p className="text-white/70 text-sm md:text-base mb-6 leading-relaxed flex-1">
@@ -155,7 +164,8 @@ export default function BlogPosts() {
                 </div>
               </Link>
             </motion.article>
-          ))}
+            ))
+          )}
         </div>
 
         {/* Back to Home Link */}
@@ -163,7 +173,7 @@ export default function BlogPosts() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.4 }}
+          transition={{ duration: 0.15, delay: 0.2 }}
           className="text-center mt-16"
         >
           <Link

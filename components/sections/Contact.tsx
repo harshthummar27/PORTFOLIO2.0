@@ -76,6 +76,7 @@ export default function Contact() {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -91,17 +92,79 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Reset success message after 3 seconds
+      // Check if response is ok
+      if (!response.ok) {
+        let errorData: any = {};
+        let errorMessage = `Server error: ${response.status}`;
+        try {
+          const text = await response.text();
+          if (text) {
+            errorData = JSON.parse(text);
+            errorMessage = errorData.error || errorData.message || errorMessage;
+          }
+        } catch (parseError) {
+          errorData = { error: `Server error: ${response.status} ${response.statusText}` };
+          errorMessage = errorData.error;
+        }
+        console.error('API Error Response:', {
+          status: response.status,
+          statusText: response.statusText,
+          errorData,
+          fullError: errorData,
+        });
+        setIsSubmitting(false);
+        setSubmitStatus("error");
+        setErrorMessage(errorMessage);
+        setTimeout(() => {
+          setSubmitStatus("idle");
+          setErrorMessage("");
+        }, 5000);
+        return;
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitting(false);
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+
+        // Reset success message after 3 seconds
+        setTimeout(() => {
+          setSubmitStatus("idle");
+        }, 3000);
+      } else {
+        setIsSubmitting(false);
+        setSubmitStatus("error");
+        const errorMsg = data.error || data.message || 'Submission failed';
+        setErrorMessage(errorMsg);
+        console.error('Submission failed:', data);
+        // Reset error message after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus("idle");
+          setErrorMessage("");
+        }, 5000);
+      }
+    } catch (error: any) {
+      console.error('Error submitting contact form:', error);
+      setIsSubmitting(false);
+      setSubmitStatus("error");
+      setErrorMessage(error?.message || 'Network error. Please check your connection.');
+      // Reset error message after 5 seconds
       setTimeout(() => {
         setSubmitStatus("idle");
-      }, 3000);
-    }, 1500);
+        setErrorMessage("");
+      }, 5000);
+    }
   };
 
   return (
@@ -128,7 +191,7 @@ export default function Contact() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 4,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -140,7 +203,7 @@ export default function Contact() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -154,7 +217,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.2 }}
           className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium mb-6">
@@ -181,7 +244,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
+            transition={{ duration: 0.2, delay: 0.05 }}
           >
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
               {/* Gradient border glow */}
@@ -306,7 +369,7 @@ export default function Contact() {
                       animate={{ opacity: 1, y: 0 }}
                       className="px-4 py-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400 text-sm"
                     >
-                      Something went wrong. Please try again.
+                      {errorMessage || "Something went wrong. Please try again."}
                     </motion.div>
                   )}
                 </form>
@@ -319,7 +382,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            transition={{ duration: 0.2, delay: 0.1 }}
             className="space-y-6"
           >
             {/* Contact Information Cards */}
@@ -331,11 +394,11 @@ export default function Contact() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+                  transition={{ duration: 0.15, delay: 0.15 + index * 0.025 }}
                 >
                   <a
                     href={info.link}
-                    className="block bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300 group"
+                    className="block bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-200 group"
                   >
                     <div className="flex items-start gap-4">
                       <div
@@ -362,7 +425,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.45 }}
+              transition={{ duration: 0.15, delay: 0.225 }}
               className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6"
             >
               <h4 className="text-white font-semibold text-lg mb-4">
@@ -392,7 +455,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.5 }}
+              transition={{ duration: 0.15, delay: 0.25 }}
               className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6"
             >
               <h4 className="text-white font-semibold text-lg mb-3">

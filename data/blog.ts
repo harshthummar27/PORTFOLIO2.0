@@ -46,7 +46,7 @@ The App Router is the future of Next.js development, and it's worth learning if 
     readTime: "5 min read",
     category: "Web Development",
     slug: "getting-started-with-nextjs-14",
-    image: "/images/blog/web.jpg",
+    image: "/images/Blog/web.jpg",
   },
   {
     id: 2,
@@ -88,7 +88,7 @@ By following these practices, you can build React applications that are scalable
     readTime: "8 min read",
     category: "React",
     slug: "building-scalable-react-applications",
-    image: "/images/blog/react.jpg",
+    image: "/images/Blog/react.jpg",
   },
   {
     id: 3,
@@ -145,7 +145,7 @@ By following these best practices, you can build Laravel APIs that are secure, p
     readTime: "6 min read",
     category: "Backend",
     slug: "laravel-best-practices-api",
-    image: "/images/blog/backend.jpg",
+    image: "/images/Blog/backend.jpg",
   },
 ];
 

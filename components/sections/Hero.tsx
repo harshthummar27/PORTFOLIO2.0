@@ -87,7 +87,7 @@ export default function Hero() {
             scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 2.5,
+            duration: 1.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -99,7 +99,7 @@ export default function Hero() {
             scale: [1.1, 1, 1.1],
           }}
           transition={{
-            duration: 3,
+            duration: 2,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -111,7 +111,7 @@ export default function Hero() {
             scale: [1, 1.3, 1],
           }}
           transition={{
-            duration: 3.5,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -134,7 +134,7 @@ export default function Hero() {
             <motion.h1
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.25, delay: 0.05 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black text-white leading-[0.95] tracking-tight mb-4 sm:mb-6"
               style={{
                 fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
@@ -157,7 +157,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
+              transition={{ duration: 0.2, delay: 0.1 }}
               className="mb-4 sm:mb-6"
             >
               <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white/90 tracking-tight">
@@ -169,7 +169,7 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
+              transition={{ duration: 0.2, delay: 0.15 }}
               className="text-base sm:text-lg md:text-xl text-white/70 mb-6 sm:mb-8 max-w-2xl leading-relaxed"
             >
               Crafting modern web experiences with Next.js, React, Laravel,
@@ -180,14 +180,14 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
+              transition={{ duration: 0.2, delay: 0.2 }}
               className="lg:hidden w-full mt-8 sm:mt-10"
             >
               <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 w-full">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.5 }}
+                  transition={{ duration: 0.15, delay: 0.25 }}
                   className="text-center px-2 sm:px-0"
                 >
                   <div
@@ -206,7 +206,7 @@ export default function Hero() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.6 }}
+                  transition={{ duration: 0.15, delay: 0.3 }}
                   className="text-center px-2 sm:px-0"
                 >
                   <div
@@ -225,7 +225,7 @@ export default function Hero() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.7 }}
+                  transition={{ duration: 0.15, delay: 0.35 }}
                   className="text-center px-2 sm:px-0"
                 >
                   <div
@@ -249,13 +249,13 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.25, delay: 0.2 }}
             className="hidden lg:flex lg:w-auto lg:flex-col gap-8"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
+              transition={{ duration: 0.3, delay: 0.5 }}
               className="text-right"
             >
               <div
@@ -274,7 +274,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={{ duration: 0.3, delay: 0.6 }}
               className="text-right"
             >
               <div
@@ -293,7 +293,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1.4 }}
+              transition={{ duration: 0.3, delay: 0.7 }}
               className="text-right"
             >
               <div
@@ -318,7 +318,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.8 }}
+          transition={{ duration: 0.2, delay: 0.4 }}
           className="max-w-4xl mx-auto"
         >
           <div className="bg-gradient-to-br from-gray-900/80 via-gray-950/90 to-black/95 backdrop-blur-2xl border border-white/5 rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden">

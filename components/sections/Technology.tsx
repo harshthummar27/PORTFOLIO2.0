@@ -142,7 +142,7 @@ export default function Technology() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 4,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -154,7 +154,7 @@ export default function Technology() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -168,7 +168,7 @@ export default function Technology() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.2 }}
           className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium mb-6">
@@ -193,7 +193,7 @@ export default function Technology() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+          transition={{ duration: 0.2, delay: 0.05 }}
           className="mb-12 md:mb-16"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 text-center">
@@ -208,8 +208,8 @@ export default function Technology() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.25, delay: 0.2 + index * 0.05 }}
-                  className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300 group cursor-default"
+                  transition={{ duration: 0.15, delay: 0.1 + index * 0.025 }}
+                  className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-200 group cursor-default"
                 >
                   <div
                     className={`w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br ${tech.color} border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}
@@ -236,7 +236,7 @@ export default function Technology() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: categoryIndex * 0.05 }}
+                transition={{ duration: 0.2, delay: categoryIndex * 0.025 }}
                 className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden"
               >
                 {/* Gradient border glow */}
@@ -265,7 +265,7 @@ export default function Technology() {
                           duration: 0.25,
                           delay: categoryIndex * 0.05 + techIndex * 0.025,
                         }}
-                        className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-300"
+                        className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 hover:bg-white/10 transition-all duration-200"
                       >
                         <div className="flex items-center justify-between mb-3">
                           <span className="text-white font-semibold">
@@ -306,7 +306,7 @@ export default function Technology() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.3 }}
+          transition={{ duration: 0.2, delay: 0.15 }}
           className="mt-16 text-center"
         >
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 shadow-2xl relative overflow-hidden inline-block">

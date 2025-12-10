@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BlogDetail from "@/components/sections/BlogDetail";
-import { getPostBySlug } from "@/data/blog";
+import { fetchBlogPost } from "@/lib/api";
 
 interface PageProps {
   params: Promise<{
@@ -13,7 +13,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await fetchBlogPost(slug);
   
   if (!post) {
     return {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await fetchBlogPost(slug);
 
   if (!post) {
     notFound();

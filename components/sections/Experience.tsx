@@ -146,7 +146,7 @@ export default function Experience() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 4,
+            duration: 2.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -158,7 +158,7 @@ export default function Experience() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -172,7 +172,7 @@ export default function Experience() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.2 }}
           className="text-center mb-12 md:mb-16 lg:mb-20"
         >
           <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white/90 text-sm md:text-base font-medium mb-6">
@@ -201,7 +201,7 @@ export default function Experience() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.2, delay: index * 0.05 }}
                 className="relative"
               >
                 {/* Timeline Line */}
@@ -209,7 +209,7 @@ export default function Experience() {
                   <div className="absolute left-8 top-20 bottom-0 w-0.5 bg-gradient-to-b from-purple-500/30 via-blue-500/30 to-transparent hidden md:block"></div>
                 )}
 
-                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden hover:bg-white/10 transition-all duration-300">
+                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden hover:bg-white/10 transition-all duration-200">
                   {/* Gradient border glow */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-50 blur-xl"></div>
 
@@ -221,7 +221,7 @@ export default function Experience() {
                           href={experience.website}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`w-16 h-16 rounded-xl bg-gradient-to-br ${experience.color} border border-white/20 flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden hover:scale-110 hover:border-white/40 transition-all duration-300 cursor-pointer group`}
+                          className={`w-16 h-16 rounded-xl bg-gradient-to-br ${experience.color} border border-white/20 flex items-center justify-center flex-shrink-0 shadow-lg overflow-hidden hover:scale-110 hover:border-white/40 transition-all duration-200 cursor-pointer group`}
                           aria-label={`Visit ${experience.company} website`}
                         >
                           <Image
@@ -346,7 +346,7 @@ export default function Experience() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.3 }}
+          transition={{ duration: 0.2, delay: 0.15 }}
           className="mb-8"
         >
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
@@ -359,11 +359,11 @@ export default function Experience() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.25, delay: 0.4 + index * 0.05 }}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 shadow-2xl relative overflow-hidden hover:bg-white/10 transition-all duration-300 group"
+                transition={{ duration: 0.15, delay: 0.2 + index * 0.025 }}
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 shadow-2xl relative overflow-hidden hover:bg-white/10 transition-all duration-200 group"
               >
                 {/* Gradient border glow */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-300"></div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/10 via-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-50 blur-xl transition-opacity duration-200"></div>
 
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-4">

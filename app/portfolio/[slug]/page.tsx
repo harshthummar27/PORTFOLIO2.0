@@ -3,18 +3,19 @@ import { notFound } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PortfolioDetail from "@/components/sections/PortfolioDetail";
-import { getProjectBySlug } from "@/data/portfolio";
+import { fetchProject } from "@/lib/api";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const project = getProjectBySlug(params.slug);
+  const { slug } = await params;
+  const project = await fetchProject(slug);
 
   if (!project) {
     return {
@@ -28,8 +29,9 @@ export async function generateMetadata({
   };
 }
 
-export default function PortfolioItemPage({ params }: PageProps) {
-  const project = getProjectBySlug(params.slug);
+export default async function PortfolioItemPage({ params }: PageProps) {
+  const { slug } = await params;
+  const project = await fetchProject(slug);
 
   if (!project) {
     notFound();
