@@ -87,6 +87,9 @@ export async function PUT(
       );
     }
 
+    // Prepare update data
+    const updateData: any = { ...validatedData };
+
     // If title changed, update slug
     if (validatedData.title && validatedData.title !== project.title) {
       const newSlug = slugify(validatedData.title);
@@ -97,12 +100,12 @@ export async function PUT(
           { status: 400 }
         );
       }
-      validatedData.slug = newSlug;
+      updateData.slug = newSlug;
     }
 
     const updatedProject = await Project.findByIdAndUpdate(
       id,
-      { $set: validatedData },
+      { $set: updateData },
       { new: true, runValidators: true }
     );
 

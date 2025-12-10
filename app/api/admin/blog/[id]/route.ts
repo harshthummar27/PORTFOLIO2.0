@@ -81,6 +81,9 @@ export async function PUT(
       );
     }
 
+    // Prepare update data
+    const updateData: any = { ...validatedData };
+
     // If title changed, update slug
     if (validatedData.title && validatedData.title !== post.title) {
       const newSlug = slugify(validatedData.title);
@@ -91,17 +94,17 @@ export async function PUT(
           { status: 400 }
         );
       }
-      validatedData.slug = newSlug;
+      updateData.slug = newSlug;
     }
 
     // Update date if provided
     if (validatedData.date) {
-      validatedData.date = new Date(validatedData.date);
+      updateData.date = new Date(validatedData.date);
     }
 
     const updatedPost = await BlogPost.findByIdAndUpdate(
       id,
-      { $set: validatedData },
+      { $set: updateData },
       { new: true, runValidators: true }
     );
 
