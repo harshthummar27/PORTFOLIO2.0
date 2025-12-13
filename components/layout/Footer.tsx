@@ -70,14 +70,14 @@ export default function Footer() {
               <div className="text-center md:text-left">
                 {/* Profile Image */}
                 <div className="mb-6 flex justify-center md:justify-start">
-                  <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/30 to-blue-500/30 border-2 border-white/20 backdrop-blur-sm p-0.5 overflow-hidden">
+                  <div className="relative w-32 h-32 rounded-full bg-gradient-to-br from-purple-500/30 to-blue-500/30 border-2 border-white/20 backdrop-blur-sm p-0.5 overflow-hidden">
                     <div className="w-full h-full rounded-full overflow-hidden bg-black">
                       <Image
                         src="/images/me.jpg"
                         alt="Harsh Thummar"
-                        width={64}
-                        height={64}
-                        className="w-full h-full object-cover rounded-full"
+                        width={128}
+                        height={128}
+                        className="w-full h-full object-cover rounded-full grayscale"
                         priority
                       />
                     </div>
