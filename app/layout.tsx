@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"; // 👈 add this
 import "./globals.css";
 
 const inter = Inter({
@@ -10,8 +11,17 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Harsh Thummar | Portfolio",
-  description: "Full-Stack Developer & UI/UX Builder - Professional portfolio showcasing skills, projects, and experience",
-  keywords: ["portfolio", "web developer", "full-stack developer", "UI/UX builder", "Next.js", "React", "Laravel"],
+  description:
+    "Full-Stack Developer & UI/UX Builder - Professional portfolio showcasing skills, projects, and experience",
+  keywords: [
+    "portfolio",
+    "web developer",
+    "full-stack developer",
+    "UI/UX builder",
+    "Next.js",
+    "React",
+    "Laravel",
+  ],
   authors: [{ name: "Harsh Thummar" }],
   icons: {
     icon: "/images/favi-icon.png",
@@ -20,7 +30,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Portfolio 2.0 | Harsh Thummar",
-    description: "Full-Stack Developer & UI/UX Builder - Professional portfolio showcasing skills, projects, and experience",
+    description:
+      "Full-Stack Developer & UI/UX Builder - Professional portfolio showcasing skills, projects, and experience",
     type: "website",
   },
   viewport: {
@@ -40,8 +51,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
-      <body className={`${inter.variable} font-sans bg-black text-white`} suppressHydrationWarning>{children}</body>
+      <body
+        className={`${inter.variable} font-sans bg-black text-white`}
+        suppressHydrationWarning
+      >
+        {children}
+        <Analytics /> {/* 👈 add this */}
+      </body>
     </html>
   );
 }
-
